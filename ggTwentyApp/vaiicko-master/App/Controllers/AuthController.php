@@ -32,6 +32,14 @@ class AuthController extends BaseController
         return $this->redirect(Configuration::LOGIN_URL);
     }
 
+    public function signin(Request $request): Response
+    {
+        return $this->html([
+            'layoutNavText' => 'Log In',
+            'layoutNavUrl'  => 'auth.login'
+        ]);
+    }
+
     /**
      * Authenticates a user and processes the login request.
      *
@@ -45,16 +53,11 @@ class AuthController extends BaseController
      */
     public function login(Request $request): Response
     {
-        $logged = null;
-        if ($request->hasValue('submit')) {
-            $logged = $this->app->getAuth()->login($request->value('username'), $request->value('password'));
-            if ($logged) {
-                return $this->redirect($this->url("admin.index"));
-            }
-        }
 
-        $message = $logged === false ? 'Bad username or password' : null;
-        return $this->html(compact("message"));
+        return $this->html([
+            'layoutNavText' => 'Sign In',
+            'layoutNavUrl'  => 'auth.signin'
+        ]);
     }
 
     /**

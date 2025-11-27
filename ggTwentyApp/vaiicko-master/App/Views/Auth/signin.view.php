@@ -3,8 +3,6 @@
 /** @var string|null $message */
 /** @var \Framework\Support\LinkGenerator $link */
 /** @var \Framework\Support\View $view */
-/** @var string $layoutNavText */
-/** @var string $layoutNavUrl */
 
 $view->setLayout('auth');
 ?>
@@ -26,17 +24,28 @@ $view->setLayout('auth');
 
                     <!-- Forms -->
                     <form class="form-signin" method="post" action="<?= $link->url("login") ?>">
+                        <!-- Username -->
                         <div class="form-label-group mb-3">
                             <label for="username" class="form-label">Username</label>
                             <input name="username" type="text" id="username" class="form-control" placeholder="Username"
                                    required autofocus>
                         </div>
 
+                        <!-- Password -->
                         <div class="form-label-group mb-3">
                             <label for="password" class="form-label">Password</label>
                             <input name="password" type="password" id="password" class="form-control"
                                    placeholder="Password" required>
                         </div>
+
+                        <!-- Repeat Password -->
+                        <div class="form-label-group mb-3">
+                            <label for="password" class="form-label">Confirm Password</label>
+                            <input name="password" type="password" id="password" class="form-control"
+                                   placeholder="Password" required>
+                        </div>
+
+                        <!-- Accept Button -->
                         <div class="text-center">
                             <button class="btn btn-primary" type="submit" name="submit">Log in
                             </button>
