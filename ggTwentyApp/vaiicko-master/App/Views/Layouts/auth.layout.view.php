@@ -26,17 +26,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-<!-- Top navigation -->
-<nav class="navbar navbar-expand-md auth-navbar">
-    <div class="container-fluid">
-        <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
-                <a class="nav-link text-light" href="<?= $link->url('auth.signin') ?>">Log In</a>
-            </li>
-        </ul>
-    </div>
-</nav>
-
 <!-- Content -->
 <div class="container-fluid mt-3">
     <div class="web-content">
