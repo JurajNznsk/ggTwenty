@@ -34,10 +34,7 @@ class AuthController extends BaseController
 
     public function signin(Request $request): Response
     {
-        return $this->html([
-            'layoutNavText' => 'Log In',
-            'layoutNavUrl'  => 'auth.login'
-        ]);
+        return $this->html();
     }
 
     /**
@@ -54,10 +51,7 @@ class AuthController extends BaseController
     public function login(Request $request): Response
     {
 
-        return $this->html([
-            'layoutNavText' => 'Sign In',
-            'layoutNavUrl'  => 'auth.signin'
-        ]);
+        return $this->html();
     }
 
     /**

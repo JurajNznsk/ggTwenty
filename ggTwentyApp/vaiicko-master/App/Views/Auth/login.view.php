@@ -3,12 +3,20 @@
 /** @var string|null $message */
 /** @var \Framework\Support\LinkGenerator $link */
 /** @var \Framework\Support\View $view */
-/** @var string $layoutNavText */
-/** @var string $layoutNavUrl */
 
 $view->setLayout('auth');
 ?>
 
+<!-- Sign In Button -->
+<ul class="auth-button">
+    <li>
+        <a href="<?= $link->url('signin') ?>" class="signin-btn">
+            Sign In
+        </a>
+    </li>
+</ul>
+
+<!-- Log In Card -->
 <div class="container">
     <div class="row">
         <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">

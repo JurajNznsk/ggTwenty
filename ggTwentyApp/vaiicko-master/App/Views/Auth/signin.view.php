@@ -7,6 +7,15 @@
 $view->setLayout('auth');
 ?>
 
+<!-- Log In Button -->
+<ul class="auth-button">
+    <li>
+        <a href="<?= $link->url('login') ?>" class="login-btn">
+            Log In
+        </a>
+    </li>
+</ul>
+
 <div class="container">
     <div class="row">
         <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
