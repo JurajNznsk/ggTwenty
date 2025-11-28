@@ -13,7 +13,7 @@ use App\Models\User;
  * Class DummyAuthenticator
  * A basic implementation of user authentication using hardcoded credentials.
  *
- * @package App\Auth
+ * @package App\Login
  * @property-read User|null $user Associated authenticated user object (or null if not logged in).
  */
 class DummyAuthenticator implements IAuthenticator

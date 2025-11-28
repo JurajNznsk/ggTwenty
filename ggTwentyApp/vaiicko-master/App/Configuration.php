@@ -37,7 +37,7 @@ class Configuration
     /**
      * URL for the login page. Users will be redirected here if authentication is required for an action.
      */
-    public const LOGIN_URL = '?c=auth&a=login';
+    public const LOGIN_URL = '?c=login&a=login';
 
     /**
      * Prefix for the default view files located in the App/Views directory. The view file format is
