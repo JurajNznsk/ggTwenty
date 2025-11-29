@@ -7,6 +7,8 @@
 $view->setLayout('auth');
 ?>
 
+<script src="<?= $link->asset('js/validateSigninPassword.js') ?>"></script>
+
 <!-- Log In Button -->
 <ul class="auth-button">
     <li>
@@ -33,7 +35,7 @@ $view->setLayout('auth');
                     </div>
 
                     <!-- Forms -->
-                    <form class="form-signin" method="post" action="<?= $link->url("login") ?>">
+                    <form class="form-signin" method="post" action="<?= $link->url("signin") ?>">
                         <!-- Username -->
                         <div class="form-label-group mb-3">
                             <label for="username" class="form-label">Username</label>
@@ -48,18 +50,21 @@ $view->setLayout('auth');
                                    placeholder="Password" required>
                         </div>
 
-                        <!-- Repeat Password -->
+                        <!-- Confirm Password -->
                         <div class="form-label-group mb-3">
-                            <label for="password" class="form-label">Confirm Password</label>
-                            <input name="password" type="password" id="password" class="form-control"
+                            <label for="confirm-password" class="form-label">Confirm Password</label>
+                            <input name="confirm-password" type="password" id="confirm-password" class="form-control"
                                    placeholder="Password" required>
                         </div>
 
                         <!-- Accept Button -->
-                        <div class="text-center">
-                            <button class="btn btn-primary" type="submit" name="submit">Log in
-                            </button>
-                        </div>
+                        <ul class="signin-accept">
+                            <li>
+                                <a href="<?= $link->url('signin') ?>" class="signin-acc-btn">
+                                    Sign In
+                                </a>
+                            </li>
+                        </ul>
                     </form>
 
                 </div>

@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Configuration;
+use App\Models\User;
 use Exception;
 use Framework\Core\BaseController;
 use Framework\Http\Request;
@@ -27,8 +28,17 @@ class SigninController extends BaseController
     {
         return $this->redirect('signin');
     }
+
     public function signin(Request $request): Response
     {
+        $user = new User();
+        $user->setUsername($request->value('username') ?? 'aa');
+        $user->setPassword($request->value('password') ?? '');
+
+        try {
+            $user->save();
+        } catch (Exception $e) {}
+
         return $this->html();
     }
     public function login(Request $request): Response

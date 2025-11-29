@@ -23,8 +23,6 @@
 
     <link rel="stylesheet" href="<?= $link->asset('css/authStyle.css') ?>">
 
-    <script src="<?= $link->asset('js/script.js') ?>"></script>
-
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
