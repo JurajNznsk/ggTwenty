@@ -1,88 +1,59 @@
-.auth-button {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    z-index: 9999; /* stay above content */
-}
-
-.auth-button li {
-    display: inline-block;
-}
-
-.signin-btn {
-    display: inline-block;
-    background-color: #00161d;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 12px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: 0.2s ease;
-}
-
-.signin-accept {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.signin-accept li {
-    display: inline-block;
-}
-
-.signin-acc-btn {
-    background-color: #00161d;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 12px;
-    text-decoration: none;
-    border: none;
-    cursor: pointer;
-    font-weight: 600;
-    transition: 0.2s ease;
-}
-
-.login-btn {
-    display: inline-block;
-    background-color: #00161d;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 12px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: 0.2s ease;
-}
-
-.login-page {
+/* Auth Layout */
+.auth-page {
     background-image: url('../images/brick_background.png');
     background-size: cover;
     background-position: center;
     background-repeat: repeat;
     min-height: 100vh;
+
+    margin: 0 !important;        /* Bacground zacina hore */
 }
 
-.container-fluid, .web-content {
-    padding: 0 !important;   /* remove container padding */
-    margin: 0 !important;    /* remove any margins */
+/* In Common */
+    /* Button on TOP */
+.top-btn {
+    display: inline-block;       /* Pre padding a width */
+    position: fixed;             /* Ostava vo viewport aj po scrollovani */
+    top: 10px;
+    right: 25px;
+    z-index: 9999;               /* Ostava navrchu */
+
+    background-color: #007274;
+    color: white;                /* Text */
+    padding: 10px 20px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 600;            /* Bold */
+}
+.top-btn:hover,
+.top-btn:active {
+    background-color: #005455;  /* Stmavne po kliknutí / prejdení */
 }
 
-.login-card {
+    /* LogIn / SignIn Card */
+.card-auth {
     background-color: #00161d;
+    color: white;
     border-radius: 12px;
     width: 100%;
     max-width: 400px;
-}
 
-.login-card-bg {
-    background: #00161d;
-    color: white;
+    margin-top: 60px !important;    /* Zabrani prekryvaniu s TOP Button */
 }
-
-.login-logo {
-    width: 120px;
-    max-width: 150px;
+.logo-auth {
+    max-width: 40%;
+    width: auto;
     height: auto;
+}
+    /* Accept Button to send Form */
+.auth-accept {
+    background-color:  #007274;
+    color: white;
+    display: block;
+    margin: 0 auto;             /* Centrovany horizontalne */
+    font-weight: 600;           /* Bold */
+}
+.auth-accept:hover,
+.auth-accept:active {
+    background-color: #005455;  /* Stmavne po kliknutí / prejdení */
 }

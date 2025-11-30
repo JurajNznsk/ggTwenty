@@ -27,10 +27,8 @@
 </head>
 <body>
 <!-- Content -->
-<div class="container-fluid mt-3 login-page">
-    <div class="web-content">
-        <?= $contentHTML ?>
-    </div>
+<div class="container-fluid mt-3 auth-page">
+    <?= $contentHTML ?>
 </div>
 </body>
 </html>
