@@ -1,4 +1,6 @@
-Dark Grey Turquoise = #00161d;
+Main Bacground Color:
+    Dark Grey Turquoise = #00161d;
 
-Pale Turquoise = #007274;
-Darker Pale Turquoise (for hover) = #005455;
+Main Button Color:
+    Pale Turquoise = #007274;
+    Darker Pale Turquoise (for hover) = #005455;
