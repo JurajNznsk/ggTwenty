@@ -31,18 +31,25 @@ class SigninController extends BaseController
 
     public function signin(Request $request): Response
     {
-        $user = new User();
-        $user->setUsername($request->value('username') ?? 'aa');
-        $user->setPassword($request->value('password') ?? '');
+//        $id = (int)$request->value('id');
+//        if ($id === 0) {
+//            $user = new User();
+//            $user->setId((int)$request->value(1));
+//            $user->setUsername($request->value('username') ?? 'default_username');
+//            $user->setPassword($request->value('password') ?? 'default_password');
+//        }
+//
+//        try {
+//            $user->save();
+//            $this->loginAfterSignin($user->getId(), $user->getPassword());
+//            return $this->redirect($this->url("home.index"));
+//        } catch (Exception $e) {
+//        }
 
-        try {
-            $user->save();
-        } catch (Exception $e) {}
-
-        return $this->html();
+        return $this->redirect('signin');
     }
-    public function login(Request $request): Response
+    private function loginAfterSignin(string $username, string $password)
     {
-        return $this->redirect(Configuration::LOGIN_URL);
+        $this->app->getAuth()->login($username, $password);
     }
 }

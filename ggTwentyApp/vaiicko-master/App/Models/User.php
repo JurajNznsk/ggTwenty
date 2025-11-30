@@ -23,6 +23,13 @@ class User extends Model implements IIdentity
     {
         return $this->username;
     }
+    public function getPassword(): string
+    {
+        return $this->password;
+    }
+    public function setId(int $id): void {
+        $this->id = $id;
+    }
     public function setUsername(string $username): void {
         $this->username = $username;
     }

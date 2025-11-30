@@ -10,7 +10,7 @@ $view->setLayout('auth');
 <!-- Sign In Button -->
 <ul class="auth-button">
     <li>
-        <a href="<?= $link->url('signin') ?>" class="signin-btn">
+        <a href="<?= $link->url('signin.index') ?>" class="signin-btn">
             Sign In
         </a>
     </li>
@@ -34,21 +34,22 @@ $view->setLayout('auth');
 
                     <!-- Forms -->
                     <form class="form-signin" method="post" action="<?= $link->url("login") ?>">
+                        <!-- Username -->
                         <div class="form-label-group mb-3">
                             <label for="username" class="form-label">Username</label>
                             <input name="username" type="text" id="username" class="form-control" placeholder="Username"
                                    required autofocus>
                         </div>
-
+                        <!-- Password -->
                         <div class="form-label-group mb-3">
                             <label for="password" class="form-label">Password</label>
                             <input name="password" type="password" id="password" class="form-control"
                                    placeholder="Password" required>
                         </div>
-                        <div class="text-center">
-                            <button class="btn btn-primary" type="submit" name="submit">Log in
-                            </button>
-                        </div>
+                        <!-- Accept Button -->
+                        <button type="submit" name="submit" class="btn btn-primary">
+                            Log In
+                        </button>
                     </form>
 
                 </div>

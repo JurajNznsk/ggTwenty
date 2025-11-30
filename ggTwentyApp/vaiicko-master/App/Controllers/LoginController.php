@@ -29,13 +29,20 @@ class LoginController extends BaseController
     }
     public function login(Request $request): Response
     {
-        return $this->html();
+        $logged = null;
+        if ($request->hasValue('submit'))
+        {
+            $logged = $this->app->getAuth()->login($request->value('username'), $request->value('password'));
+            if ($logged)
+            {
+                return $this->redirect($this->url("home.index"));
+            }
+        }
+
+        $message = $logged === false ? 'Zlý login alebo heslo!' : null;
+        return $this->html(compact("message"));
     }
-    public function logout(Request $request): Response
-    {
-        $this->app->getAuth()->logout();
-        return $this->html();
-    }
+
     public function signin(Request $request): Response
     {
         return $this->redirect('?c=signin&a=signin');

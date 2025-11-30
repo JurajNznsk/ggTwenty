@@ -58,13 +58,14 @@ $view->setLayout('auth');
                         </div>
 
                         <!-- Accept Button -->
-                        <ul class="signin-accept">
+                        <!-- <ul class="signin-accept">
                             <li>
                                 <a href="<?= $link->url('signin') ?>" class="signin-acc-btn">
                                     Sign In
                                 </a>
                             </li>
-                        </ul>
+                        </ul> -->
+                        <button type="submit" class="btn btn-primary">Sign In</button>
                     </form>
 
                 </div>

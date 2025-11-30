@@ -58,8 +58,8 @@
             <!-- User info + Logout -->
             <?php if ($auth?->isLogged()) { ?>
                 <div class="d-flex align-items-center text-white ms-auto">
-                    <span class="me-3">User: <b><?= $auth?->user?->name ?></b></span>
-                    <a class="btn btn-outline-light btn-sm" href="<?= $link->url('auth.logout') ?>">Log out</a>
+                    <span class="me-3">User: <b><?= $auth?->user?->getUsername() ?></b></span>
+                    <a class="btn btn-outline-light btn-sm" href="<?= $link->url('home.logout') ?>">Log out</a>
                 </div>
             <?php } else { ?>
                 <div class="d-flex align-items-center text-white ms-auto">
@@ -82,7 +82,7 @@
             </li>
         </ul>
         <?php if ($auth?->isLogged()) { ?>
-            <span class="navbar-text">Logged in user: <b><?= $auth?->user?->name ?></b></span>
+            <span class="navbar-text">Logged in user: <b><?= $auth?->user?->getUsername() ?></b></span>
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="<?= $link->url('auth.logout') ?>">Log out</a>
