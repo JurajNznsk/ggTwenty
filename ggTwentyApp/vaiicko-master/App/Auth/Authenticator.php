@@ -20,9 +20,17 @@ class Authenticator implements IAuthenticator
 
     public function login($username, $password): bool
     {
-        $user = new User($username);
-        $_SESSION['user'] = $user;
+        $users = User::getAll("username = ?", [$username]);
+        if (empty($users) || count($users) > 1)
+            return false;
+
+        $user = $users[0];
+        if (!password_verify($password, $user->getPassword())) {
+            return false;
+        }
         $this->user = $user;
+        $this->session->set('user', $this->user);
+
         return true;
     }
 

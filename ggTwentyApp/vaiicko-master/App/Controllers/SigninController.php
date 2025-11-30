@@ -26,30 +26,57 @@ class SigninController extends BaseController
     }
     public function index(Request $request): Response
     {
-        return $this->redirect('signin');
+        return $this->redirect('?c=signin&a=signin');
     }
 
     public function signin(Request $request): Response
     {
-//        $id = (int)$request->value('id');
-//        if ($id === 0) {
-//            $user = new User();
-//            $user->setId((int)$request->value(1));
-//            $user->setUsername($request->value('username') ?? 'default_username');
-//            $user->setPassword($request->value('password') ?? 'default_password');
-//        }
-//
-//        try {
-//            $user->save();
-//            $this->loginAfterSignin($user->getId(), $user->getPassword());
-//            return $this->redirect($this->url("home.index"));
-//        } catch (Exception $e) {
-//        }
+        // Nebol odoslaný formulár
+        if (!$request->hasValue('submit')) {
+            return $this->html();
+        }
 
-        return $this->redirect('signin');
+        $username = $request->value('username');
+        $password = $request->value('password');
+        $confirmPassword = $request->value('confirm-password');
+
+        // Kontrola, či už existuje username
+        $existingUsers = User::getAll("username = ?", [$username]);
+        if (!empty($existingUsers)) {
+            $message = 'Username already exists!';
+            return $this->html(compact("message"));
+        }
+        // Kontrola zhody hesiel
+        if ($password !== $confirmPassword) {
+            $message = "Passwords do not match!";
+            return $this->html(compact('message'));
+        }
+
+        $newUser = new User();
+        $newUser->setId(0);
+        $newUser->setUsername($username);
+        $newUser->setPassword($password);
+
+        try {
+            $newUser->save();
+        } catch (Exception $e) {
+            $message = 'Error creating user: ' . $e->getMessage();
+            return $this->html(compact("message"));
+        }
+
+        return $this->loginAfterSignin($username, $password);
     }
+
     private function loginAfterSignin(string $username, string $password)
     {
-        $this->app->getAuth()->login($username, $password);
+        $logged = $this->app->getAuth()->login($username, $password);
+        if ($logged)
+        {
+            return $this->redirect($this->url("home.index"));
+        }
+
+        $message = $logged === false ? 'Zlý login alebo heslo!' : null;
+        return $this->html(compact("message"));
+
     }
 }

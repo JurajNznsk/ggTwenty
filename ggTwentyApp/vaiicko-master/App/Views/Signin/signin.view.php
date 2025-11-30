@@ -4,6 +4,8 @@
 /** @var \Framework\Support\LinkGenerator $link */
 /** @var \Framework\Support\View $view */
 
+use App\Configuration;
+
 $view->setLayout('auth');
 ?>
 
@@ -12,7 +14,7 @@ $view->setLayout('auth');
 <!-- Log In Button -->
 <ul class="auth-button">
     <li>
-        <a href="<?= $link->url('login') ?>" class="login-btn">
+        <a href="<?= $link->url('login.index') ?>" class="login-btn">
             Log In
         </a>
     </li>
@@ -58,14 +60,9 @@ $view->setLayout('auth');
                         </div>
 
                         <!-- Accept Button -->
-                        <!-- <ul class="signin-accept">
-                            <li>
-                                <a href="<?= $link->url('signin') ?>" class="signin-acc-btn">
-                                    Sign In
-                                </a>
-                            </li>
-                        </ul> -->
-                        <button type="submit" class="btn btn-primary">Sign In</button>
+                        <button type="submit" name="submit" class="btn btn-primary">
+                            Sign In
+                        </button>
                     </form>
 
                 </div>

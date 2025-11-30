@@ -34,6 +34,6 @@ class User extends Model implements IIdentity
         $this->username = $username;
     }
     public function setPassword(string $password): void {
-        $this->password = $password;
+        $this->password = password_hash($password, PASSWORD_DEFAULT);;
     }
 }

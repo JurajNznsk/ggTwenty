@@ -42,9 +42,4 @@ class LoginController extends BaseController
         $message = $logged === false ? 'Zlý login alebo heslo!' : null;
         return $this->html(compact("message"));
     }
-
-    public function signin(Request $request): Response
-    {
-        return $this->redirect('?c=signin&a=signin');
-    }
 }
