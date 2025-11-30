@@ -69,14 +69,8 @@ class SigninController extends BaseController
 
     private function loginAfterSignin(string $username, string $password)
     {
-        $logged = $this->app->getAuth()->login($username, $password);
-        if ($logged)
-        {
-            return $this->redirect($this->url("home.index"));
-        }
+        $this->app->getAuth()->login($username, $password);
 
-        $message = $logged === false ? 'Zlý login alebo heslo!' : null;
-        return $this->html(compact("message"));
-
+        return $this->redirect($this->url("home.index"));
     }
 }
