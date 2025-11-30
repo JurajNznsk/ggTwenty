@@ -39,7 +39,7 @@ class LoginController extends BaseController
             }
         }
 
-        $message = $logged === false ? 'Zlý login alebo heslo!' : null;
+        $message = $logged === false ? 'Bad username or password!' : null;
         return $this->html(compact("message"));
     }
 }
