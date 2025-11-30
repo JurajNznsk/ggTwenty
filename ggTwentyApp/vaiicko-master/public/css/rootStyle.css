@@ -1,3 +1,14 @@
-p {
-    color: red !important;
+/* Root Layout */
+.navbar-root {
+    background-color: #00161d;
+    padding: 0.5rem 1rem;
+}
+.navbar-logo {
+    width: auto;
+    height: 50px;
+}
+.navbar-user {
+    color: white;
+    font-weight: 600;
+    margin-left: 1rem;
 }

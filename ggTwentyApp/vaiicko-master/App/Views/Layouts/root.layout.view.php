@@ -26,50 +26,43 @@
 </head>
 <body>
 <!-- Navigation -->
-<nav class="navbar navbar-expand-md navbar-dark">
+<nav class="navbar navbar-expand-lg navbar-dark navbar-root">
     <div class="container-fluid">
-
         <!-- Logo -->
-        <a class="navbar-brand d-flex align-items-center" href="<?= $link->url('home.index') ?>">
-            <img src="<?= $link->asset('images/gg_logo.png') ?>" alt="Logo">
+        <a class="navbar-brand" href="<?= $link->url('home.index') ?>">
+            <img src="<?= $link->asset("images/gg_logo.png") ?>" alt="Logo" class="navbar-logo">
         </a>
 
-        <!-- Hamburger menu -->
-        <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <!-- User -->
+        <span class="navbar-text navbar-user">
+            User: <b><?= $auth?->user?->getUsername() ?></b>
+        </span>
+
+        <!-- Hamburger toggler -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+                aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <!-- Collapsible content -->
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <!-- Centrálne navigačné linky -->
-            <ul class="navbar-nav mx-auto text-center">
+
+        <!-- Collapsible menu -->
+        <div class="collapse navbar-collapse" id="navbarContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" href="<?= $link->url('characters.index') ?>">Characters</a>
+                    <a class="nav-link" href="#">Characters</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?= $link->url('monsters.index') ?>">Monsters</a>
+                    <a class="nav-link" href="#">Monsters</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?= $link->url('encounters.index') ?>">Encounters</a>
+                    <a class="nav-link" href="#">Encounters</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= $link->url('logout') ?>">Log Out</a>
                 </li>
             </ul>
-
-            <!-- User info + Logout -->
-            <?php if ($auth?->isLogged()) { ?>
-                <div class="d-flex align-items-center ms-auto user-info">
-                    <span class="username">User: <b><?= $auth?->user?->getUsername() ?></b></span>
-                    <a class="btn btn-outline-light btn-sm btn-logout" href="<?= $link->url('home.logout') ?>">Log out</a>
-                </div>
-            <?php } else { ?>
-                <div class="d-flex align-items-center ms-auto user-info">
-                    <a class="btn btn-outline-light btn-sm" href="<?= App\Configuration::LOGIN_URL ?>">Log in</a>
-                </div>
-            <?php } ?>
         </div>
     </div>
 </nav>
-
-<p> PARAGRAF <p>
 
 <!-- Site content -->
 <div class="container-fluid mt-3">
