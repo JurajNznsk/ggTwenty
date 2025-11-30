@@ -53,7 +53,6 @@ class SigninController extends BaseController
         }
 
         $newUser = new User();
-        $newUser->setId(0);
         $newUser->setUsername($username);
         $newUser->setPassword($password);
 
