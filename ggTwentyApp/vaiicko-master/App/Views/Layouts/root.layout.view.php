@@ -21,6 +21,7 @@
             crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="<?= $link->asset('css/rootStyle.css') ?>">
+    <link rel="stylesheet" href="<?= $link->asset('css/characters.css') ?>">
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
@@ -99,10 +100,8 @@
 </nav>
 
 <!-- Site content -->
-<div class="container-fluid mt-3">
-    <div class="web-content">
-        <?= $contentHTML ?>
-    </div>
+<div class="container-fluid mt-3 root-page">
+    <?= $contentHTML ?>
 </div>
 </body>
 </html>

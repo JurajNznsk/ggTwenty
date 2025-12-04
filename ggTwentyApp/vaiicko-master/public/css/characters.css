@@ -1,0 +1,41 @@
+/* --- Character Card Styles --- */
+
+/* The main container for the card */
+.character-card {
+    background-color: #f7f7f7; /* Light background for contrast */
+    border: 1px solid #ddd;
+    border-radius: 10px; /* Rounded corners */
+    text-align: center; /* Center the name and image */
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    height: 100%; /* Ensures all cards in the row have the same height */
+    overflow: hidden; /* Clips content if necessary */
+}
+
+/* Character Name Styling */
+.character-name {
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #ccc;
+    white-space: nowrap; /* Prevent name from wrapping */
+    overflow: hidden;
+    text-overflow: ellipsis; /* Add "..." if name is too long */
+}
+
+/* Image Container */
+.character-image {
+    max-height: 250px; /* Limit image size */
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Actual Image element */
+.character-image img {
+    width: 100%; /* Make image fill its container width */
+    height: auto;
+    border-radius: 5px; /* Subtle rounding on the image itself */
+}

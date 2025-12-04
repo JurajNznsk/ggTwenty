@@ -1,4 +1,14 @@
 /* Root Layout */
+.root-page {
+    background-image: url('../images/brick_background.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: repeat;
+    min-height: 100vh;
+
+    margin: 0 !important;        /* Bacground zacina hore */
+}
+
 .navbar-root {
     background-color: #00161d;
     padding: 0.5rem 1rem;

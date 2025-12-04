@@ -12,6 +12,7 @@ class Character extends Model
     protected int $hp = 0;
     protected int $ac = 0;
     protected int $current_hp = 0;
+    protected ?string $image_url = '';
 
     public function getId(): ?int
     {
@@ -41,6 +42,11 @@ class Character extends Model
     public function getCurrentHp(): int
     {
         return $this->current_hp;
+    }
+
+    public function getImageUrl(): string
+    {
+        return $this->image_url ?? 'characters/default_char.png';
     }
 
     public function setId(?int $id): void
