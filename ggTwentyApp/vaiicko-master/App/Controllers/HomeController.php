@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Configuration;
+use App\Models\Character;
 use Framework\Core\BaseController;
 use Framework\Http\Request;
 use Framework\Http\Responses\Response;
@@ -16,7 +17,9 @@ class HomeController extends BaseController
 
     public function index(Request $request) : Response
     {
-        return $this->html();
+        $characters = Character::getAll('user_id = ?', [$this->app->getAuth()->user->getId()]);
+
+        return $this->html(compact('characters'));
     }
     public function logout(Request $request): Response
     {

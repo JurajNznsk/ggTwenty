@@ -29,47 +29,71 @@
 <nav class="navbar navbar-expand-lg navbar-dark navbar-root">
     <div class="container-fluid">
 
-        <!-- Hamburger Menu Icon -->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
-                aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+        <!-- Dropdown Menu On < lg Devices -->
+        <div class="dropdown d-lg-none me-auto">
+            <!-- Menu Icon Button -->
+            <button class="navbar-menu-small" type="button" id="smallMenuDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="<?= $link->asset('images/menu_icon.png') ?>" alt="Menu">
+            </button>
+            <!-- Dropdown Menu Items -->
+            <ul class="dropdown-menu navbar-dropdown" aria-labelledby="smallMenuDropdown" data-bs-popper="static">
+                <li>
+                    <a class="dropdown-item" href="<?= $link->url('home.index') ?>">
+                        CHARACTERS
+                    </a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="<?= $link->url('monsters.index') ?>">
+                        MONSTERS
+                    </a
+                </li>
+                <li>
+                    <a class="dropdown-item" href="#">
+                        ENCOUNTERS
+                    </a>
+                </li>
+            </ul>
+        </div>
 
-        <!-- Logo Dropdown -->
-        <div class="dropdown ms-auto order-lg-last">
+        <!-- Dropdown Logo -->
+        <div class="dropdown order-lg-last">
             <!-- Logo -->
             <a href="#" class="d-flex align-items-center text-decoration-none dropdown-toggle-no-caret"
                id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <img src="<?= $link->asset("images/gg_logo.png") ?>" alt="Logo" class="navbar-logo">
             </a>
-
             <!-- Dropdown Items -->
-            <ul class="dropdown-menu dropdown-menu-end text-small shadow navbar-dropdown" aria-labelledby="userDropdown">
+            <ul class="dropdown-menu dropdown-menu-end text-small text-end shadow navbar-dropdown" aria-labelledby="userDropdown">
                 <li class="px-3 py-1">
-                    <span class="text-muted small navbar-user"> <?= $auth?->user?->getUsername() ?> </span>
+                    <span class="small"> <?= $auth?->user?->getUsername() ?> </span>
                 </li>
                 <li>
-                    <a class="dropdown-item text-danger navbar-logout" href="<?= $link->url('home.logout') ?>">
+                    <a class="dropdown-item navbar-logout" href="<?= $link->url('home.logout') ?>">
                         Log Out
                     </a>
                 </li>
             </ul>
         </div>
 
-        <!-- Main Menu -->
-        <div class="collapse navbar-collapse" id="navbarContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= $link->url('home.index') ?>">Characters</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= $link->url('monsters.index') ?>">Monsters</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Encounters</a>
-                </li>
-            </ul>
-        </div>
+
+        <!-- Menu On >= lg Devices -->
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-none d-lg-flex">
+            <li class="nav-item">
+                <a class="nav-link" href="<?= $link->url('home.index') ?>">
+                    CHARACTERS
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="<?= $link->url('monsters.index') ?>">
+                    MONSTERS
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    ENCOUNTERS
+                </a>
+            </li>
+        </ul>
 
     </div>
 </nav>

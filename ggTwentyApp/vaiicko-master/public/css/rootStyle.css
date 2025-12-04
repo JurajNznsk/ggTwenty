@@ -11,14 +11,29 @@
     background-color: #004050;
     border: none;
 }
-.navbar-user {
-    color: white !important;
-    font-weight: 600 !important;
+.navbar-dropdown a,
+.navbar-dropdown span {
+    color: white;
+}
+.navbar-dropdown a:hover,
+.navbar-dropdown a:active {
+    background-color: #002937;
+    color: white;
 }
 .navbar-logout {
     color: red !important;
 }
-.navbar-logout:hover {
+.navbar-logout:hover,
+.navbar-logout:active {
     background-color: #002937;
     color: red !important;
+}
+.navbar-menu-small {
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    box-shadow: none;
+    outline: none;
+    line-height: 0;
 }
