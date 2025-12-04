@@ -28,39 +28,49 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark navbar-root">
     <div class="container-fluid">
-        <!-- Logo -->
-        <a class="navbar-brand" href="<?= $link->url('home.index') ?>">
-            <img src="<?= $link->asset("images/gg_logo.png") ?>" alt="Logo" class="navbar-logo">
-        </a>
 
-        <!-- User -->
-        <span class="navbar-text navbar-user">
-            User: <b><?= $auth?->user?->getUsername() ?></b>
-        </span>
-
-        <!-- Hamburger toggler -->
+        <!-- Hamburger Menu Icon -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
                 aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <!-- Collapsible menu -->
+        <!-- Logo Dropdown -->
+        <div class="dropdown ms-auto order-lg-last">
+            <!-- Logo -->
+            <a href="#" class="d-flex align-items-center text-decoration-none dropdown-toggle-no-caret"
+               id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="<?= $link->asset("images/gg_logo.png") ?>" alt="Logo" class="navbar-logo">
+            </a>
+
+            <!-- Dropdown Items -->
+            <ul class="dropdown-menu dropdown-menu-end text-small shadow navbar-dropdown" aria-labelledby="userDropdown">
+                <li class="px-3 py-1">
+                    <span class="text-muted small navbar-user"> <?= $auth?->user?->getUsername() ?> </span>
+                </li>
+                <li>
+                    <a class="dropdown-item text-danger navbar-logout" href="<?= $link->url('home.logout') ?>">
+                        Log Out
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Main Menu -->
         <div class="collapse navbar-collapse" id="navbarContent">
-            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Characters</a>
+                    <a class="nav-link" href="<?= $link->url('home.index') ?>">Characters</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Monsters</a>
+                    <a class="nav-link" href="<?= $link->url('monsters.index') ?>">Monsters</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Encounters</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= $link->url('logout') ?>">Log Out</a>
-                </li>
             </ul>
         </div>
+
     </div>
 </nav>
 

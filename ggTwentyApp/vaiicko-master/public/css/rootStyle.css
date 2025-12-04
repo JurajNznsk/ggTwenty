@@ -7,8 +7,18 @@
     width: auto;
     height: 50px;
 }
+.navbar-dropdown {
+    background-color: #004050;
+    border: none;
+}
 .navbar-user {
-    color: white;
-    font-weight: 600;
-    margin-left: 1rem;
+    color: white !important;
+    font-weight: 600 !important;
+}
+.navbar-logout {
+    color: red !important;
+}
+.navbar-logout:hover {
+    background-color: #002937;
+    color: red !important;
 }
