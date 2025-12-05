@@ -23,7 +23,26 @@ class HomeController extends BaseController
     }
     public function add(Request $request) : Response
     {
-        return $this->html();
+        $name = $request->value('name');
+        $hp = $request->value('hp');
+        $currentHp = $hp;
+        $ac = $request->value('ac');
+        $userId = $this->app->getAuth()->user->getId();
+
+        $character = new Character();
+        $character->setName($name);
+        $character->setHp($hp);
+        $character->setCurrentHp($currentHp);
+        $character->setAc($ac);
+        $character->setUserId($userId);
+
+        try {
+            $character->save();
+            return $this->redirect('?c=home&a=index');
+        } catch (\Exception $e) {
+
+        }
+            return $this->html();
     }
     public function character(Request $request): Response
     {
