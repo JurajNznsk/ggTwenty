@@ -14,9 +14,6 @@ $view->setLayout('root');
 <script src="<?= $link->asset('js/changeCharImage.js') ?>" defer></script> <!-- defer loads script after html -->
 <script src="<?= $link->asset('js/editChar.js') ?>" defer></script> <!-- defer loads script after html -->
 
-<!-- Alert Messages (for AJAX) -->
-<div id="message-box" class="mt-3 alert d-none" role="alert"></div>
-
 <div class="char-card">
     <h2 class="char-form-heading text-center">
         CHARACTER SHEET
@@ -68,4 +65,8 @@ $view->setLayout('root');
     <a href="<?= $link->url('delete', ['id' => $char->getId()]) ?>" class="delete-char-btn">
         DELETE CHARACTER
     </a>
+</div>
+<!-- Alert Messages (for AJAX) -->
+<div class="d-flex justify-content-center">
+    <div id="message-box" class="mt-3 alert d-none w-50" role="alert"></div>
 </div>

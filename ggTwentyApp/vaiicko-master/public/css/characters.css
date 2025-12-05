@@ -2,7 +2,6 @@
 .add-char {
     width: 100%;
     text-align: center;
-    padding-top: 10px;
 }
 .add-char-btn {
     display: inline-block;
@@ -13,7 +12,6 @@
     text-decoration: none;
     font-weight: 700;
     font-size: 1.1rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     white-space: nowrap;
 }
 .add-char-btn:hover,
