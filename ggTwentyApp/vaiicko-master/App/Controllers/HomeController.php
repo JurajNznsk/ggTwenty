@@ -26,8 +26,7 @@ class HomeController extends BaseController
     {
         // Nebol odoslaný formulár
         if (!$request->hasValue('submit')) {
-            $message = 'Neodoslany';
-            return $this->html(compact('message'));
+            return $this->html();
         }
 
         $name = $request->value('character-name');
@@ -59,7 +58,7 @@ class HomeController extends BaseController
 
         try {
             $character->save();
-            return $this->redirect('?c=home&a=index');
+            return $this->redirect($this->url('home.index'));
         } catch (\Exception $e) {
             $message = 'Error saving character: ' . $e->getMessage();
             return $this->html(compact('message'));
@@ -102,9 +101,9 @@ class HomeController extends BaseController
         } catch (\Exception $e) {
             return $this->json([
                 'status' => 'error',
-                'message' => 'Error saving character to database.',
+                'message' => 'Error saving character.',
                 'detail' => $e->getMessage()
-            ], 500);
+            ]);
         }
     }
     public function delete(Request $request): Response
@@ -121,11 +120,11 @@ class HomeController extends BaseController
 
             $char->delete();
 
-        } catch (Exception $e) {
-            throw new HttpException(500, 'DB Chyba: ' . $e->getMessage());
+        } catch (\Exception $e) {
+            throw new HttpException(500, 'DB Error: ' . $e->getMessage());
         }
 
-        return $this->redirect('?c=home&a=index');
+        return $this->redirect($this->url('home.index'));
     }
     public function character(Request $request): Response
     {

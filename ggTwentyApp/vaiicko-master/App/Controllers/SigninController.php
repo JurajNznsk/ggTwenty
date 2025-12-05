@@ -70,6 +70,6 @@ class SigninController extends BaseController
     {
         $this->app->getAuth()->login($username, $password);
 
-        return $this->redirect($this->url("home.index"));
+        return $this->redirect($this->url('home.index'));
     }
 }
