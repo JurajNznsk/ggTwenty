@@ -35,12 +35,23 @@ class HomeController extends BaseController
         $ac = (int)$request->value('character-ac');
         $userId = (int)$this->app->getAuth()->user->getId();
 
+        $imgFile = $request->file('character-img');
+        $uniqueName = time() . '-' . $imgFile->getName();
+        $targetPath = Configuration::UPLOAD_DIR . '/characters/' . $uniqueName;
+
+        if (!$imgFile->store($targetPath))
+        {
+            throw new HttpException(500, 'Failed to upload image.');
+        }
+
+
         $character = new Character();
         $character->setName($name);
         $character->setHp($hp);
         $character->setCurrentHp($currentHp);
         $character->setAc($ac);
         $character->setUserId($userId);
+        $character->setImageUrl($uniqueName);
 
         try {
             $character->save();

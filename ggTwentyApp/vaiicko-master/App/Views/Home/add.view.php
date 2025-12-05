@@ -14,7 +14,7 @@
         CREATE NEW CHARACTER
     </h2>
 
-    <form method="post" action="<?= $link->url('add') ?>">
+    <form method="post" action="<?= $link->url('add') ?>" enctype="multipart/form-data">
 
         <div class="row">
             <!-- Image Picker -->
@@ -28,7 +28,7 @@
                     </div>
                 </div>
 
-                <input type="file" id="image-upload" class="form-control image-file-input" accept="image/*">
+                <input name="character-img" type="file" id="image-upload" class="form-control image-file-input" accept="image/*">
             </div>
             <!-- Character Info -->
             <div class="col-sm-6">
