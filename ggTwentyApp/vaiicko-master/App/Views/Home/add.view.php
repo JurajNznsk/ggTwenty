@@ -42,11 +42,11 @@
                 <div class="row g-3 mt-4">
                     <div class="col-6">
                         <label for="character-hp" class="d-block text-white text-center mb-2">Hit Points</label>
-                        <input type="number" id="character-hp" class="form-control" value="0" min="0" required>
+                        <input name="character-hp" type="number" id="character-hp" class="form-control" value="0" min="0" required>
                     </div>
                     <div class="col-6">
                         <label for="character-ac" class="d-block text-white text-center mb-2">Armor Class</label>
-                        <input type="number" id="character-ac" class="form-control" value="0" min="0" required>
+                        <input name="character-ac" type="number" id="character-ac" class="form-control" value="0" min="0" required>
                     </div>
                 </div>
             </div>
