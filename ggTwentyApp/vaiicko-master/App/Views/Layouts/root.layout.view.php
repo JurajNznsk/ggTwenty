@@ -102,7 +102,7 @@
 </nav>
 
 <!-- Site content -->
-<div class="container-fluid mt-3 root-page">
+<div class="container-fluid mt-3 pt-5 root-page">
     <?= $contentHTML ?>
 </div>
 </body>
