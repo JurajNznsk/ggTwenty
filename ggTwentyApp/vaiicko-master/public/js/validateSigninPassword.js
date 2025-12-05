@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const password = document.getElementById("password");
     const confirm = document.getElementById("confirm-password");
 
-    if (!form) return; // keď niekde nepoužiješ tento formulár
+    if (!form) return;
 
     form.addEventListener("submit", function(e) {
         if (password.value !== confirm.value) {
