@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="<?= $link->asset('css/rootStyle.css') ?>">
     <link rel="stylesheet" href="<?= $link->asset('css/characters.css') ?>">
     <link rel="stylesheet" href="<?= $link->asset('css/addChar.css') ?>">
+    <link rel="stylesheet" href="<?= $link->asset('css/editChar.css') ?>">
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>

@@ -7,6 +7,7 @@ use App\Models\Character;
 use Framework\Core\BaseController;
 use Framework\Http\Request;
 use Framework\Http\Responses\Response;
+use HttpException;
 
 class HomeController extends BaseController
 {
@@ -51,7 +52,7 @@ class HomeController extends BaseController
         $character->setCurrentHp($currentHp);
         $character->setAc($ac);
         $character->setUserId($userId);
-        $character->setImageUrl($uniqueName);
+        $character->setImageUrl($targetPath);
 
         try {
             $character->save();
@@ -60,6 +61,63 @@ class HomeController extends BaseController
             $message = 'Error saving character: ' . $e->getMessage();
             return $this->html(compact('message'));
         }
+    }
+    public function edit(Request $request): Response
+    {
+        $id = (int)$request->value('character-id');
+        $char = Character::getOne($id);
+
+        $char->setName($request->value('character-name'));
+        $char->setHp((int)$request->value('character-hp'));
+        $char->setCurrentHp((int)$request->value('character-cur-hp'));
+        $char->setAc((int)$request->value('character-ac'));
+
+        $imgFile = $request->file('character-img');
+        if ($imgFile && $imgFile->isOk())
+        {
+            $oldFileUrl = $char->getImageUrl();
+            if (file_exists($oldFileUrl) && is_file($oldFileUrl))
+                unlink($oldFileUrl);
+
+            $newFileName = time() . '-' . $imgFile->getName();
+            $targetPath = Configuration::UPLOAD_DIR . '/characters/' . $newFileName;
+            if ($imgFile->store($targetPath))
+                $char->setImageUrl($targetPath);
+        }
+
+        try {
+            $char->save();
+
+            return $this->json([
+                'status' => 'success',
+                'message' => 'Character updated successfully.',
+                'new_image_url' => $char->getImageUrl()
+            ]);
+        } catch (\Exception $e) {
+            return $this->json([
+                'status' => 'error',
+                'message' => 'Error saving character to database.',
+                'detail' => $e->getMessage()
+            ], 500);
+        }
+    }
+    public function delete(Request $request): Response
+    {
+        try {
+            $id = (int)$request->value('id');
+            $char = Character::getOne($id);
+
+            if (is_null($char)) {
+                throw new HttpException(404);
+            }
+            @unlink($char->getImageUrl());
+            $char->delete();
+
+        } catch (Exception $e) {
+            throw new HttpException(500, 'DB Chyba: ' . $e->getMessage());
+        }
+
+        return $this->redirect('?c=home&a=index');
     }
     public function character(Request $request): Response
     {

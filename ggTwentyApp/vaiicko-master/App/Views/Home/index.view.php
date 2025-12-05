@@ -20,10 +20,6 @@ $view->setLayout('root');
 <div class="container my-4 character-card-grid">
     <div class="row g-4 justify-content-center">
         <?php foreach ($characters as $character): ?>
-            <?php
-                $imageUrl = $character->getImageUrl();
-            ?>
-
             <div class="col-12 col-md-6 col-lg-4">
                 <a href="<?= $link->url('character', ['id' => $character->getId()]) ?>" class="text-decoration-none text-dark">
                     <div class="character-card">
@@ -33,7 +29,7 @@ $view->setLayout('root');
 
                         <div class="character-image">
                             <img
-                                    src="<?= $link->asset(Configuration::UPLOAD_DIR . $imageUrl) ?>"
+                                    src="<?= $link->asset($character->getImageUrl()) ?>"
                                     alt="Image of <?= $character->getName() ?>"
                             >
                         </div>

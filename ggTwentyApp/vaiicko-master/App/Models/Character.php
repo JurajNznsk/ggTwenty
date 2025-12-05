@@ -49,7 +49,7 @@ class Character extends Model
         if ($this->image_url === '' || $this->image_url === null)
             return 'characters/default_char.png';
 
-        return 'characters/' . $this->image_url;
+        return $this->image_url;
     }
 
     public function setId(?int $id): void

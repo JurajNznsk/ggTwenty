@@ -5,12 +5,11 @@
 
     $view->setLayout('root');
 ?>
-<p> <?= $message ?? '' ?> </p>
 
-<script src="<?= $link->asset('js/addCharacterImage.js') ?>"></script>
+<script src="<?= $link->asset('js/changeCharImage.js') ?>" defer></script> <!-- defer loads script after html -->
 
-<div class="add-char-card">
-    <h2 class="add-form-heading text-center">
+<div class="char-card">
+    <h2 class="char-form-heading text-center">
         CREATE NEW CHARACTER
     </h2>
 

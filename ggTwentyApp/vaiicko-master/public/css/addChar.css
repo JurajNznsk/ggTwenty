@@ -1,5 +1,5 @@
-/* Add Character Form */
-.add-char-card {
+/* Character Form */
+.char-card {
     background-color: #00161d;
     border-radius: 1.5rem;
     padding: 30px;
@@ -8,7 +8,7 @@
     margin-left: auto;
     margin-right: auto;
 }
-.add-form-heading {
+.char-form-heading {
     color: white;
     font-weight: 700;
     margin-bottom: 20px;
@@ -37,9 +37,13 @@
     border: 1px solid #002d3c;
     color: white;
 }
-/* 6. Button Styling */
+#image-preview {
+    width: 100%;
+    display: none;
+    object-fit: cover;
+}
 .add-save-btn {
-    background-color: #007274; /* Default button color */
+    background-color: #007274;
     color: white;
     border: none;
     padding: 10px 30px;
