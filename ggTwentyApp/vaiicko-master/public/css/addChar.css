@@ -1,86 +1,54 @@
-/* --- Add Character --- */
-:root {
-    --char-dark: #00161d;
-    --char-teal-base: #007274;
-    --char-teal-hover: #005455;
-    --char-light: #cccccc;
-    --char-white: #ffffff;
-}
-.add-char {
-    display: flex;
-    justify-content: center;
-    padding: 15px;
-    box-sizing: border-box;
-}
-.add-char-form {
-    max-width: 700px;
-    width: 95%;
+/* Add Character Form */
+.add-char-card {
     background-color: #00161d;
-    border-radius: 1rem;
-}
-#character-name {
-    background-color: white;
-    color: black;
-    border-radius: 0.375rem;
-    text-align: center;
-}
-#character-name::placeholder {
-    text-align: center;
-}
-.stat-container {
-    position: relative;
+    border-radius: 1.5rem;
+    padding: 30px;
+    max-width: 600px;
     width: 100%;
-    height: 60px;
-    background-image: url('../images/heart.png');
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    background-position: center;
+    margin-left: auto;
+    margin-right: auto;
 }
-
-/* Input fields inside SVG shapes */
-.stat-input {
-    background: transparent;
-    border: none;
+.add-form-heading {
     color: white;
-    font-size: 1.5rem;
-    font-weight: bold;
-    text-align: center;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    outline: none;
+    font-weight: 700;
+    margin-bottom: 20px;
+    border-bottom: 2px solid white;
+    padding-bottom: 10px;
 }
-
-/* --- Image Picker --- */
-.image-preview-container {
-    width: 192px; /* w-48 */
-    height: 192px; /* h-48 */
-    background-color: #333;
-    border: 2px dashed #666;
-    border-radius: 0.5rem;
-    overflow: hidden;
+.show-image-area {
+    height: 165px;
+    border: 2px dotted #002d3c;
+    border-radius: 5px;
+    width: 100%;
+    background-color: #212529;
     display: flex;
-    justify-content: center;
     align-items: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-    transition: border-color 0.2s ease;
+    justify-content: center;
+    overflow: hidden;
 }
-.image-preview-container:hover {
-    border-color: var(--char-teal-base);
-}
-.image-preview-container img {
+.show-image-area #image-preview {
+    display: none;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
 }
-
-/* --- Save Button --- */
-.btn-save {
-    background-color: #007274;
+.image-file-input {
+    background-color: #212529;
+    border: 1px solid #002d3c;
+    color: white;
+}
+/* 6. Button Styling */
+.add-save-btn {
+    background-color: #007274; /* Default button color */
+    color: white;
     border: none;
+    padding: 10px 30px;
+    margin-top: 20px;
+    border-radius: 0.5rem;
+    font-weight: 600;
 }
-.btn-save:hover {
+.add-save-btn:hover,
+.add-save-btn:active {
     background-color: #005455;
+    color: white;
 }

@@ -23,11 +23,17 @@ class HomeController extends BaseController
     }
     public function add(Request $request) : Response
     {
-        $name = $request->value('name');
-        $hp = $request->value('hp');
+        // Nebol odoslaný formulár
+        if (!$request->hasValue('submit')) {
+            $message = 'Neodoslany';
+            return $this->html(compact('message'));
+        }
+
+        $name = $request->value('character-name');
+        $hp = (int)$request->value('character-hp');
         $currentHp = $hp;
-        $ac = $request->value('ac');
-        $userId = $this->app->getAuth()->user->getId();
+        $ac = (int)$request->value('character-ac');
+        $userId = (int)$this->app->getAuth()->user->getId();
 
         $character = new Character();
         $character->setName($name);
@@ -40,9 +46,9 @@ class HomeController extends BaseController
             $character->save();
             return $this->redirect('?c=home&a=index');
         } catch (\Exception $e) {
-
+            $message = 'Error saving character: ' . $e->getMessage();
+            return $this->html(compact('message'));
         }
-            return $this->html();
     }
     public function character(Request $request): Response
     {

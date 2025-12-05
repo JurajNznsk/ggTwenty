@@ -4,8 +4,6 @@
 /** @var \Framework\Support\LinkGenerator $link */
 /** @var \Framework\Support\View $view */
 
-use App\Configuration;
-
 $view->setLayout('auth');
 ?>
 
@@ -30,7 +28,7 @@ $view->setLayout('auth');
             </div>
 
             <!-- Forms -->
-            <form method="post" action="<?= $link->url("signin") ?>">
+            <form method="post" action="<?= $link->url('signin') ?>">
                 <!-- Username -->
                 <div class="mb-3">
                     <label for="username" class="form-label">Username</label>
