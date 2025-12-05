@@ -21,6 +21,13 @@ class HomeController extends BaseController
 
         return $this->html(compact('characters'));
     }
+    public function character(Request $request): Response
+    {
+        $id = (int)$request->value('id');
+        $char = Character::getOne($id);
+
+        return $this->html(compact('char'));
+    }
     public function logout(Request $request): Response
     {
         $this->app->getAuth()->logout();

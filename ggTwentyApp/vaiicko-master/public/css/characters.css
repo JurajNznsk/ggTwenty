@@ -1,41 +1,50 @@
-/* --- Character Card Styles --- */
-
-/* The main container for the card */
-.character-card {
-    background-color: #f7f7f7; /* Light background for contrast */
-    border: 1px solid #ddd;
-    border-radius: 10px; /* Rounded corners */
-    text-align: center; /* Center the name and image */
-    padding: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-    height: 100%; /* Ensures all cards in the row have the same height */
-    overflow: hidden; /* Clips content if necessary */
+/* Character Card */
+.character-card-grid {
+    max-width: 1200px;
 }
-
-/* Character Name Styling */
+.character-card {
+    background-color: #00161d;
+    border-radius: 10px;
+    text-align: center;
+    padding: 10px;
+    height: 100%;                       /* 100% predka */
+    overflow: hidden;                   /* Odreze pretekajuci kontent */
+    max-width: 380px;
+    margin: 0 auto;                     /* Centruje horizontalne */
+    transition: transform 0.2s ease;    /* Hladky transform pri :hover */
+}
+.character-card:hover {
+    transform: translateY(-5px);        /* Posunie vyssie */
+}
 .character-name {
     font-size: 1.2rem;
     font-weight: 600;
+    color: #ccc;
     padding-bottom: 5px;
     margin-bottom: 10px;
     border-bottom: 2px solid #ccc;
-    white-space: nowrap; /* Prevent name from wrapping */
-    overflow: hidden;
-    text-overflow: ellipsis; /* Add "..." if name is too long */
+    white-space: nowrap;
+    overflow: hidden;               /* Prilis dlhe meno sa skryje */
+    text-overflow: clip;            /* Odstrihne koniec dlheho textu */
+    padding-left: 2px;
+    padding-right: 2px;
 }
-
-/* Image Container */
 .character-image {
-    max-height: 250px; /* Limit image size */
+    height: 250px;
+    width: 100%;
     overflow: hidden;
+
+    /* Centrovanie obrazka */
     display: flex;
     justify-content: center;
     align-items: center;
-}
 
-/* Actual Image element */
+    background-color: #002734;
+    border-radius: 5px;
+}
 .character-image img {
-    width: 100%; /* Make image fill its container width */
-    height: auto;
-    border-radius: 5px; /* Subtle rounding on the image itself */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5px;
 }
