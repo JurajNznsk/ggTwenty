@@ -36,15 +36,18 @@ class HomeController extends BaseController
         $ac = (int)$request->value('character-ac');
         $userId = (int)$this->app->getAuth()->user->getId();
 
-        $imgFile = $request->file('character-img');
-        $uniqueName = time() . '-' . $imgFile->getName();
-        $targetPath = Configuration::UPLOAD_DIR . '/characters/' . $uniqueName;
-
-        if (!$imgFile->store($targetPath))
+        if ($request->hasValue('character-img'))
         {
-            throw new HttpException(500, 'Failed to upload image.');
+            $imgFile = $request->file('character-img');
+            $uniqueName = time() . '-' . $imgFile->getName();
+            $targetPath = Configuration::UPLOAD_DIR . '/characters/' . $uniqueName;
+            if (!$imgFile->store($targetPath))
+                throw new HttpException(500, 'Failed to upload image.');
         }
-
+        else
+        {
+            $targetPath = '';
+        }
 
         $character = new Character();
         $character->setName($name);
@@ -76,13 +79,16 @@ class HomeController extends BaseController
         if ($imgFile && $imgFile->isOk())
         {
             $oldFileUrl = $char->getImageUrl();
-            if (file_exists($oldFileUrl) && is_file($oldFileUrl))
-                unlink($oldFileUrl);
-
+            if ($oldFileUrl !== Configuration::UPLOAD_DIR . 'characters/default_char.png')
+            {
+                if (file_exists($oldFileUrl) && is_file($oldFileUrl))
+                    @unlink($oldFileUrl);
+            }
             $newFileName = time() . '-' . $imgFile->getName();
             $targetPath = Configuration::UPLOAD_DIR . '/characters/' . $newFileName;
             if ($imgFile->store($targetPath))
                 $char->setImageUrl($targetPath);
+
         }
 
         try {
@@ -110,7 +116,9 @@ class HomeController extends BaseController
             if (is_null($char)) {
                 throw new HttpException(404);
             }
-            @unlink($char->getImageUrl());
+            if ($char->getImageUrl() !== Configuration::UPLOAD_DIR . 'characters/default_char.png')
+                @unlink($char->getImageUrl());
+
             $char->delete();
 
         } catch (Exception $e) {

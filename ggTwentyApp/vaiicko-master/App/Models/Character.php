@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Configuration;
 use Framework\Core\Model;
 
 class Character extends Model
@@ -47,7 +48,7 @@ class Character extends Model
     public function getImageUrl(): string
     {
         if ($this->image_url === '' || $this->image_url === null)
-            return 'characters/default_char.png';
+            return Configuration::UPLOAD_DIR . 'characters/default_char.png';
 
         return $this->image_url;
     }
