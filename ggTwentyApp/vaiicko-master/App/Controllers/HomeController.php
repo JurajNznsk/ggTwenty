@@ -21,6 +21,10 @@ class HomeController extends BaseController
 
         return $this->html(compact('characters'));
     }
+    public function add(Request $request) : Response
+    {
+        return $this->html();
+    }
     public function character(Request $request): Response
     {
         $id = (int)$request->value('id');

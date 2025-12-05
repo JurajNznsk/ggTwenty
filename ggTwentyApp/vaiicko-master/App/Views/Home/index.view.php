@@ -11,6 +11,12 @@ $view->setLayout('root');
 
 <script src="<?= $link->asset('js/characterNameFontSize.js') ?>"></script>
 
+<div class="add-char">
+    <a href="<?= $link->url('add') ?>" class="add-char-btn">
+        Add New Character
+    </a>
+</div>
+
 <div class="container my-4 character-card-grid">
     <div class="row g-4 justify-content-center">
         <?php foreach ($characters as $character): ?>
