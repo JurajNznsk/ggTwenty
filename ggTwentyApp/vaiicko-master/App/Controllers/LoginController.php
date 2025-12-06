@@ -24,14 +24,16 @@ class LoginController extends BaseController
         $logged = null;
         if ($request->hasValue('submit'))
         {
-            $logged = $this->app->getAuth()->login($request->value('username'), $request->value('password'));
+            $username = trim($request->value('username'));
+            $logged = $this->app->getAuth()->login($username, $request->value('password'));
             if ($logged)
-            {
                 return $this->redirect($this->url("home.index"));
-            }
+            else
+                $message = 'Bad username or password!';
+                return $this->html(compact('message', 'username'));
         }
 
-        $message = $logged === false ? 'Bad username or password!' : null;
-        return $this->html(compact("message"));
+
+        return $this->html();
     }
 }

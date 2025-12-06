@@ -22,7 +22,7 @@ $view->setLayout('auth');
 
             <!-- Validation Error messages -->
             <div class="text-center text-danger mb-3">
-                <?= @$message ?>
+                <?= @$message ?? '' ?>
             </div>
 
             <!-- Forms -->
@@ -31,7 +31,7 @@ $view->setLayout('auth');
                 <div class="mb-3">
                     <label for="username" class="form-label">Username</label>
                     <input name="username" type="text" id="username" class="form-control" placeholder="Username"
-                           required autofocus>
+                           value="<?= $username ?? '' ?>" required autofocus>
                 </div>
                 <!-- Password -->
                 <div class="form-label-group mb-3">

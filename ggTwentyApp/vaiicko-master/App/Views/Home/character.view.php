@@ -60,12 +60,16 @@ $view->setLayout('root');
         </div>
     </form>
 </div>
-<!-- Delete Button -->
+<!-- Delete Form (for no accidental Delete) -->
 <div class="d-flex justify-content-center">
-    <a href="<?= $link->url('delete', ['id' => $char->getId()]) ?>" class="delete-char-btn">
-        DELETE CHARACTER
-    </a>
+    <form method="post" action="<?= $link->url('delete') ?>" onsubmit="return confirm('Are you sure?');">
+        <input type="hidden" name="id" value="<?= $char->getId() ?>">
+        <button type="submit" class="delete-char-btn">
+            DELETE CHARACTER
+        </button>
+    </form>
 </div>
+
 <!-- Alert Messages (for AJAX) -->
 <div class="d-flex justify-content-center">
     <div id="message-box" class="mt-3 alert d-none w-50" role="alert"></div>

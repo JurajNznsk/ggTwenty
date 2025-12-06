@@ -36,15 +36,21 @@ class SigninController extends BaseController
             return $this->html();
         }
 
-        $username = $request->value('username');
+        $username = trim($request->value('username'));
         $password = $request->value('password');
         $confirmPassword = $request->value('confirm-password');
+
+        // Kontrola povinných polí
+        if (empty($username) || empty($password)) {
+            $message = 'All fields are required!';
+            return $this->html(compact('message'));
+        }
 
         // Kontrola, či už existuje username
         $existingUsers = User::getAll("username = ?", [$username]);
         if (!empty($existingUsers)) {
             $message = 'Username already exists!';
-            return $this->html(compact("message"));
+            return $this->html(compact('message'));
         }
         // Kontrola zhody hesiel
         if ($password !== $confirmPassword) {

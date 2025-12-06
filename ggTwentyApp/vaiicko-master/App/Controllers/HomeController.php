@@ -29,7 +29,11 @@ class HomeController extends BaseController
             return $this->html();
         }
 
-        $name = $request->value('character-name');
+        $name = trim($request->value('character-name'));
+        if (empty($name)) {
+            $message = 'Character name is required!';
+            return $this->html(compact('message'));
+        }
         $hp = (int)$request->value('character-hp');
         $currentHp = $hp;
         $ac = (int)$request->value('character-ac');
@@ -68,6 +72,15 @@ class HomeController extends BaseController
     {
         $id = (int)$request->value('character-id');
         $char = Character::getOne($id);
+
+        // Kontrola, či postava patrí prihlásenému userovi
+        $currentUserId = $this->app->getAuth()->user->getId();
+        if ($char->getUserId() !== $currentUserId) {
+            return $this->json([
+                'status' => 'error',
+                'message' => 'Unauthorized access to character.'
+            ]);
+        }
 
         $char->setName($request->value('character-name'));
         $char->setHp((int)$request->value('character-hp'));
@@ -111,6 +124,12 @@ class HomeController extends BaseController
         try {
             $id = (int)$request->value('id');
             $char = Character::getOne($id);
+
+            // Kontrola, či postava patrí prihlásenému userovi
+            $currentUserId = $this->app->getAuth()->user->getId();
+            if ($char->getUserId() !== $currentUserId) {
+                throw new HttpException(403, 'Unauthorized access to character.');
+            }
 
             if (is_null($char)) {
                 throw new HttpException(404);
